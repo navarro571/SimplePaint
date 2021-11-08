@@ -9,6 +9,7 @@ export default class App {
 
 
     start() {
+        this.stop()
         this.canvas.addEventListener('mousedown', this.onDown);
         this.canvas.addEventListener('mousemove', this.onMove);
         this.canvas.addEventListener('mouseup', this.onUp);
