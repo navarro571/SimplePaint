@@ -1,50 +1,14 @@
-// Import stylesheets
-/*
-import './style.css';
-import Canvas, { CanvasSetting, brush } from './canvas/Canvas';
+import Canvas from "./canvas/Canvas";
+import App from "./app";
+import DefaultBrush from "./brushes/DefaultBrush";
 
-// Write TypeScript code!
-const appDiv: HTMLCanvasElement = document.querySelector('#app');
-appDiv.innerHTML = `<h1>TypeScript XD</h1>`;
+const htmlCanvas: HTMLCanvasElement = document.querySelector("canvas");
 
-const settings = new CanvasSetting();
-const canvas = new Canvas(appDiv, settings);
-//canvas.registerBrush();
-*/
+const app = new App();
+const canvas = new Canvas(htmlCanvas, { height: 800, width: 600 });
 
-import Brush from "./canvas/Brush";
-import Mouse from "./canvas/Mouse";
+const defaultBrush = new DefaultBrush();
 
-
-let canvas: HTMLCanvasElement = document.querySelector("canvas");
-let ctx: CanvasRenderingContext2D = canvas.getContext("2d");
-// let painting: boolean = false;
-
-const brush = new Brush(ctx)
-const mouse = new Mouse(canvas)
-mouse.setBursh(brush)
-mouse.start()
-// canvas.addEventListener('mousedown', startPosition)
-// canvas.addEventListener('mousemove', draw);
-// canvas.addEventListener('mouseup', finishedPosition);
-// canvas.addEventListener('mouseout', finishedPosition);
-
-// function startPosition(e) {
-//     painting = true;
-//     ctx.beginPath();
-//     draw(e);
-// }
-
-// function draw(e: MouseEvent){
-//     if(!painting) return;
-//     ctx.lineWidth = 10;
-//     ctx.lineCap = 'round';
-//     ctx.strokeStyle = 'black';
-//     ctx.lineTo(e.offsetX, e.offsetY);
-//     ctx.stroke();
-//     ctx.beginPath();
-//     ctx.moveTo(e.offsetX, e.offsetY);
-// }
-// function finishedPosition(){
-//     painting = false;
-// }
+app.setCanvas(htmlCanvas);
+app.setBrush(defaultBrush);
+app.start();

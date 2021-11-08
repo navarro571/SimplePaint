@@ -1,48 +1,28 @@
-/*
-class CanvasSetting {
-    color;
-    brushSize;
-    opacity;
-}
-
-interface brush{
-    onDown(e: MouseEvent, settings: CanvasSetting),
-    onMove(e: MouseEvent, settings: CanvasSetting),
-    onUp(e: MouseEvent, settings: CanvasSetting)
-}
 
 class Canvas {
-    private brushes: brush[];
-    private currentBrush;
-    private canvas: HTMLCanvasElement;
-    private canvasSettings: CanvasSetting;
+    private _canvas: HTMLCanvasElement;
+    private _ctx: CanvasRenderingContext2D;
 
-    constructor(canvas: HTMLCanvasElement, settings: CanvasSetting) {
-        this.canvas = canvas;
-        this.canvas.addEventListener('mousedown', this.mousedown);
-        this.canvas.addEventListener('mousemove', this.mousemove);
-        this.canvas.addEventListener('mouseup', this.mouseup);
-        this.canvasSettings = settings;
-    }
-    registerBrush(b: brush){
-        this.brushes.push(b);
-    }
-    mousedown(e: MouseEvent) {
-        this.currentBrush.onDown(e, this.canvasSettings);
+    constructor(canvas: HTMLCanvasElement, size = { height: 800, width: 600 }) {
+        this._canvas = canvas;
+        this._ctx = canvas.getContext('2d');
+
+        this._canvas.height = size.height;
+        this._canvas.width = size.width;
     }
 
-    mousemove(e: MouseEvent) {
-        this.currentBrush.onMove(e, this.canvasSettings);
-    }
-    mouseup(e: MouseEvent) {
-        this.currentBrush.onUp(e, this.canvasSettings);
+    get canvas(): HTMLCanvasElement {
+        return this._canvas;
     }
 
+    get context(): CanvasRenderingContext2D {
+        return this._ctx;
+    }
+
+    resizeCanvas(height: number, width: number){
+        this._canvas.height = height;
+        this._canvas.width = width;
+    }
 }
 export default Canvas;
 
-export{
-    brush,
-    CanvasSetting
-}
-*/
