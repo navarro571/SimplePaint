@@ -3,13 +3,14 @@ import IBrush from '../interfaces/IBrush';
 class GreenBrush implements IBrush {
     private isPaiting: Boolean = false;
 
-    onDown(context, e: MouseEvent) {
+    onDown({event:e, context}) {
         this.isPaiting = true;
         context.beginPath();
-        this.onMove(context, e);
+        this.onMove({event:e, context});
     }
 
-    onMove(context, e: MouseEvent) {
+    onMove({event:e, context}) {
+        console.log('GreenBrush');
         if (!this.isPaiting) return;
         context.lineWidth = 10;
         context.lineCap = 'round';
@@ -20,13 +21,12 @@ class GreenBrush implements IBrush {
         context.moveTo(e.offsetX, e.offsetY);
     }
 
-    onUp(context, e: MouseEvent) {
+    onUp({event:e, context}) {
         this.isPaiting = false;
     }
     onMouseOut() {
         this.isPaiting = false;
     }
-
 }
 
 export default GreenBrush;

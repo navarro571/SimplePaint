@@ -1,19 +1,26 @@
 import Canvas from "./canvas/Canvas";
 import App from "./app";
-import brushList from "./brushes/BrushList"
 import BrushHandler from "./brushes/BrushHandler";
-import ColorSelector from "./UI/ColorSelector";
+import CanvasMouseEvent from "./canvas/CanvasMouseEvent";
+import DefaultBrush from "./brushes/DefaultBrush";
+import GreenBrush from "./brushes/GreenBrush";
+import ButtonHandler from './butons/ButtonHandler';
 
 const htmlCanvas: HTMLCanvasElement = document.querySelector("canvas");
 
-const app = new App();
 const canvas = new Canvas(htmlCanvas, { height: 800, width: 600 });
 const brushHandler = new BrushHandler()
-brushHandler.setApp(app);
-brushHandler.setBrushList(brushList);
-let colorSelector = new ColorSelector();
-colorSelector.start()
+let pincel1 = new DefaultBrush()
+let pincel2 = new GreenBrush()
 
-app.setCanvas(htmlCanvas);
+brushHandler.setBrush(pincel2)//temporalmente
+
+let buttonHandler = new ButtonHandler()
+buttonHandler.registerButton(document.querySelector('#red'), pincel1)
+buttonHandler.registerButton(document.querySelector('#green'), pincel2)
+
+
+const canvasMouseEvent = new CanvasMouseEvent(canvas.canvas, canvas.context)
+canvasMouseEvent.start()
 
 

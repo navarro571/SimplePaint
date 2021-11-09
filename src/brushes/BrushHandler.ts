@@ -1,21 +1,29 @@
 import eventBus from "../basic/EventBus";
+import IBrush from "../interfaces/IBrush";
+import brushList from "./BrushList";
+
 
 export default class BrushHandler {
-    private brushList: any
-    private app: any
+    private brush: IBrush;
+    private static Instance: BrushHandler
 
     constructor() {
-        eventBus.subscribe('color-selection', this.setBrush)
+        eventBus.subscribe('canvas-mousemove', p => this.brush.onMove(p))
+        eventBus.subscribe('canvas-mousedown', p => this.brush.onDown(p))
+        eventBus.subscribe('canvas-mouseup', p => this.brush.onUp(p))
+        eventBus.subscribe('canvas-mouseout', p =>this.brush.onMouseOut())
+        console.log(this.brush);
+        
     }
-    setBrush = (brushName) => {
-        if (!this.app) return;
-        this.app.setBrush(this.brushList[brushName]);
-        this.app.start()
+
+    static getInstance(): BrushHandler {
+        if (BrushHandler.Instance) {
+            return BrushHandler.Instance
+        }
+        BrushHandler.Instance = new BrushHandler()
+        return BrushHandler.Instance
     }
-    setBrushList(brushList: any) {
-        this.brushList = brushList
-    }
-    setApp(app: any) {
-        this.app = app
+    setBrush(brush: IBrush) {
+        this.brush = brush
     }
 }
