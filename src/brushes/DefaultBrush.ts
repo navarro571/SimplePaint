@@ -10,8 +10,6 @@ class DefaultBrush implements IBrush {
     }
 
     onMove({event:e, context}) {
-        console.log('1DefaultBrush');
-        
         if (!this.isPaiting) return;
         context.lineWidth = 10;
         context.lineCap = 'round';

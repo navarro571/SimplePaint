@@ -12,8 +12,6 @@ export default class BrushHandler {
         eventBus.subscribe('canvas-mousedown', p => this.brush.onDown(p))
         eventBus.subscribe('canvas-mouseup', p => this.brush.onUp(p))
         eventBus.subscribe('canvas-mouseout', p =>this.brush.onMouseOut())
-        console.log(this.brush);
-        
     }
 
     static getInstance(): BrushHandler {

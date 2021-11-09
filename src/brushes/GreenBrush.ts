@@ -10,7 +10,6 @@ class GreenBrush implements IBrush {
     }
 
     onMove({event:e, context}) {
-        console.log('GreenBrush');
         if (!this.isPaiting) return;
         context.lineWidth = 10;
         context.lineCap = 'round';

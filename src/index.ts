@@ -9,7 +9,7 @@ import ButtonHandler from './butons/ButtonHandler';
 const htmlCanvas: HTMLCanvasElement = document.querySelector("canvas");
 
 const canvas = new Canvas(htmlCanvas, { height: 800, width: 600 });
-const brushHandler = new BrushHandler()
+const brushHandler = BrushHandler.getInstance()
 let pincel1 = new DefaultBrush()
 let pincel2 = new GreenBrush()
 

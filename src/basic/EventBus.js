@@ -18,7 +18,7 @@ class EventBus {
     dispatch(eventName, payload) {
         if (!this.event[eventName]) return
         this.event[eventName].forEach(cb => cb(payload));
-        console.log(Object.keys(this.event).length, this.event[eventName]);
+        // console.log(Object.keys(this.event).length, this.event[eventName]);
     }
 }
 
