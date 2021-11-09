@@ -10,22 +10,34 @@ import RectBrush from "./brushes/RectBrush";
 import CanvasRender from "./canvas/CanvasRender";
 import RectRender from "./canvas/Renders/RectRender";
 import LineRender from "./canvas/Renders/LineRender";
+import LineRenderElement from "./canvas/CanvasComponents/LineRenderElement";
+import RectRenderElement from "./canvas/CanvasComponents/RectRenderElement";
+import IRender from "./interfaces/IRender";
 
-const renders = {
-    "LineRenderElement": new LineRender(),
-    "RectRenderElement": new RectRender(),
-}
+
+//render list
+const renders = new Map<any, IRender>();
+renders.set(LineRenderElement, new LineRender())
+renders.set(RectRenderElement, new RectRender())
 
 const htmlCanvas: HTMLCanvasElement = document.querySelector("canvas");
 
 const canvas = new Canvas(htmlCanvas, { height: 800, width: 600 });
-const render = new CanvasRender(renders);
+
+//rendering system start
+const render = new CanvasRender(renders, canvas.context);
+render.addElement(new LineRenderElement())
+render.addElement(new RectRenderElement())
+render.addElement(new LineRenderElement())
+//rendering system ends
+
+
 const brushHandler = BrushHandler.getInstance()
 let pincel1 = new DefaultBrush();
 let pincel2 = new GreenBrush();
 let pincel3 = new RectBrush();
 
-brushHandler.setBrush(pincel2)//temporalmente
+brushHandler.setBrush(pincel2)//by default
 
 let buttonHandler = new ButtonHandler()
 buttonHandler.registerButton(document.querySelector('#red'), pincel1)

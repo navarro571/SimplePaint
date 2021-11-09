@@ -1,3 +1,3 @@
 export default interface IRender {
-    render(object: object);
+    render(object: object, context:CanvasRenderingContext2D)
 }

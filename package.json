@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "build": "esbuild src/index.ts --bundle  --minify --sourcemap --splitting --format=esm --outdir=dist",
-    "server": "node esbuild.config.js"
+    "watch": "node esbuild.config.js"
   },
   "dependencies": {},
   "devDependencies": {

@@ -1,28 +1,34 @@
 import IRender from "../interfaces/IRender";
-import RectRenderElement from "./CanvasComponents/RectRenderElement";
-import LineRender from "./Renders/LineRender";
-import RectRender from "./Renders/RectRender";
 
 export default class CanvasRender {
-    renders: object;
-    renderObjects: object[];
+    renders:  Map<any, IRender>;
+    renderObjects: object[] = [];
     tempObjects: object[];
+    context: CanvasRenderingContext2D;
 
-    constructor(renders: object) {
+    constructor(renders: Map<any, IRender>, context: CanvasRenderingContext2D) {
+        this.renders  = renders;
+        this.context  = context;
     }
 
-    tempRect(context: CanvasRenderingContext2D, object) {
-        this.renders[object.constructor.name]();
+    tempRect(object) {
+        this.renderObjects.push(object)
+        this.render()
     }
 
-    rect(context: CanvasRenderingContext2D, object) {
-
+    addElement(object) {
+        this.renderObjects.push(object)
+        this.render()
     }
-    line(context: CanvasRenderingContext2D, object) {
 
+    private clear(){
+        console.log('Cleaning------------------------------');
     }
 
     private render(){
-
+        this.clear()
+        this.renderObjects.forEach(element =>{
+            this.renders.get(element.constructor).render(element, this.context);
+        })
     }
 }

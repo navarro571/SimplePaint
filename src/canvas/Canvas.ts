@@ -6,7 +6,6 @@ class Canvas {
     constructor(canvas: HTMLCanvasElement, size = { height: 800, width: 600 }) {
         this._canvas = canvas;
         this._ctx = canvas.getContext('2d');
-
         this._canvas.height = size.height;
         this._canvas.width = size.width;
     }
