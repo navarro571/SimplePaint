@@ -9,7 +9,6 @@ export default class CanvasRender {
     tempObjects: object[];
 
     constructor(renders: object) {
-
     }
 
     tempRect(context: CanvasRenderingContext2D, object) {
