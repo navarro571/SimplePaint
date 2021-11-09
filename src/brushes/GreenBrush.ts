@@ -1,23 +1,29 @@
 import IBrush from '../interfaces/IBrush';
+import CanvasRender from "../canvas/CanvasRender";
+import LineRenderElement from "../canvas/CanvasComponents/LineRenderElement";
 
 class GreenBrush implements IBrush {
     private isPaiting: Boolean = false;
+    render: CanvasRender;
+    line: LineRenderElement;
+    constructor(render: CanvasRender) {
+        this.render = render;
+    }
 
     onDown({event:e, context}) {
         this.isPaiting = true;
-        context.beginPath();
-        this.onMove({event:e, context});
+        this.line = new LineRenderElement();
+        this.line.points.push({ x: e.offsetX, y: e.offsetY });
+        this.line.lineCap = 'round';
+        this.line.color = 'green';
+        this.line.lineWidth = 10;
+        this.render.addElement(this.line);
     }
 
     onMove({event:e, context}) {
         if (!this.isPaiting) return;
-        context.lineWidth = 10;
-        context.lineCap = 'round';
-        context.strokeStyle = 'green';
-        context.lineTo(e.offsetX, e.offsetY);
-        context.stroke();
-        context.beginPath();
-        context.moveTo(e.offsetX, e.offsetY);
+        this.line.points.push({ x: e.offsetX, y: e.offsetY });
+        this.render.render();
     }
 
     onUp({event:e, context}) {

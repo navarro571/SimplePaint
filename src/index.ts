@@ -26,16 +26,16 @@ const canvas = new Canvas(htmlCanvas, { height: 800, width: 600 });
 
 //rendering system start
 const render = new CanvasRender(renders, canvas.context);
-render.addElement(new LineRenderElement())
-render.addElement(new RectRenderElement())
-render.addElement(new LineRenderElement())
+// render.addElement(new LineRenderElement())
+// render.addElement(new RectRenderElement())
+// render.addElement(new LineRenderElement())
 //rendering system ends
 
 
 const brushHandler = BrushHandler.getInstance()
-let pincel1 = new DefaultBrush();
-let pincel2 = new GreenBrush();
-let pincel3 = new RectBrush();
+let pincel1 = new DefaultBrush(render);
+let pincel2 = new GreenBrush(render);
+let pincel3 = new RectBrush(render);
 
 brushHandler.setBrush(pincel2)//by default
 

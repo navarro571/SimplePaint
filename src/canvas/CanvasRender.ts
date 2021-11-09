@@ -11,21 +11,16 @@ export default class CanvasRender {
         this.context  = context;
     }
 
-    tempRect(object) {
-        this.renderObjects.push(object)
-        this.render()
-    }
-
     addElement(object) {
         this.renderObjects.push(object)
         this.render()
     }
 
     private clear(){
-        console.log('Cleaning------------------------------');
+        this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
     }
 
-    private render(){
+    render(){
         this.clear()
         this.renderObjects.forEach(element =>{
             this.renders.get(element.constructor).render(element, this.context);
