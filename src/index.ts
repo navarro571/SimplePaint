@@ -7,10 +7,19 @@ import GreenBrush from "./brushes/GreenBrush";
 import ButtonHandler from './butons/ButtonHandler';
 import './style.css';
 import RectBrush from "./brushes/RectBrush";
+import CanvasRender from "./canvas/CanvasRender";
+import RectRender from "./canvas/Renders/RectRender";
+import LineRender from "./canvas/Renders/LineRender";
+
+const renders = {
+    "LineRenderElement": new LineRender(),
+    "RectRenderElement": new RectRender(),
+}
 
 const htmlCanvas: HTMLCanvasElement = document.querySelector("canvas");
 
 const canvas = new Canvas(htmlCanvas, { height: 800, width: 600 });
+const render = new CanvasRender(renders);
 const brushHandler = BrushHandler.getInstance()
 let pincel1 = new DefaultBrush();
 let pincel2 = new GreenBrush();
