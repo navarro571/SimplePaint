@@ -3,11 +3,11 @@ abstract class EventResolver{
         if(!this[name]) this[name] = new Array();
         this[name].push(callback);
     }
-    static unregister(name, callback): void {
+    static unregister(name: string, callback): void {
         if(!this[name]) return;
         this[name].splice(this[name].indexOf(callback), 1);
     }
-    static dispatch(name, payload): void {
+    static dispatch(name: string, payload): void {
         if(!this[name]) return;
         this[name].forEach(cb => cb(payload));
     }

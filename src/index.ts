@@ -1,38 +1,31 @@
 import Canvas from "./canvas/Canvas";
 import BrushHandler from "./brush/BrushHandler";
 import CanvasMouseEvent from "./canvas/CanvasMouseEvent";
-import DefaultBrush from "./brush/brushes/DefaultBrush";
-import ButtonHandler from './butons/ButtonHandler';
-import RectBrush from "./brush/brushes/RectBrush";
-import CanvasRender from "./canvas/CanvasRender";
-import RectRender from "./canvas/renders/RectRender";
-import LineRender from "./canvas/renders/LineRender";
-import LineRenderElement from "./canvas/elements/LineRenderElement";
-import RectRenderElement from "./canvas/elements/RectRenderElement";
-import IRender from "./interfaces/IRender";
+import ButtonHandler from './UI/ButtonHandler';
 import './style.css';
-import EventResolver from "./basic/EventResolver";
+import Pencil from "./brush/brushes/Pencil";
+import Rect from "./brush/brushes/Rect";
+import Circle from "./brush/brushes/Circle";
 
 const htmlCanvas: HTMLCanvasElement = document.querySelector("canvas");
-
-const renders = new Map<any, IRender>();
-renders.set(LineRenderElement, new LineRender());
-renders.set(RectRenderElement, new RectRender());
+const resizeBtn : HTMLButtonElement = document.querySelector("#canvas-resize");
+const resizeHeight: HTMLInputElement = document.querySelector("#canvas-resize-height");
+const resizeWidth: HTMLInputElement = document.querySelector("#canvas-resize-width");
 
 const canvas = new Canvas(htmlCanvas, { height: 900, width: 1600 });
-const render = new CanvasRender(renders, canvas.context);
+const pencil = new Pencil();
+const rect = new Rect();
+const circle = new Circle();
 
-const defaultBrush = new DefaultBrush(render);
-const rectBrush = new RectBrush(render);
-const buttonHandler = new ButtonHandler();
+ButtonHandler.registerButton(document.querySelector('#pencil-brush'), pencil);
+ButtonHandler.registerButton(document.querySelector('#rect-brush'), rect);
+ButtonHandler.registerButton(document.querySelector('#circle-brush'), circle);
 
-buttonHandler.registerButton(document.querySelector('#brush'), defaultBrush);
-buttonHandler.registerButton(document.querySelector('#rect-brush'), rectBrush);
+CanvasMouseEvent.init(canvas.canvas);
+BrushHandler.init(canvas.context);
+BrushHandler.setBrush(pencil);
 
-CanvasMouseEvent.init(canvas.canvas, canvas.context);
-
-BrushHandler.init();
-BrushHandler.setBrush(defaultBrush);
+resizeBtn.onclick = () => canvas.resizeCanvas(parseInt(resizeHeight.value), parseInt(resizeWidth.value));
 
 
 

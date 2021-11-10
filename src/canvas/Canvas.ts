@@ -19,8 +19,10 @@ class Canvas {
     }
 
     resizeCanvas(height: number, width: number){
+        const canvasData = this._ctx.getImageData(0, 0, this.canvas.width, this._canvas.height);
         this._canvas.height = height;
         this._canvas.width = width;
+        this._ctx.putImageData(canvasData, 0, 0);
     }
 }
 export default Canvas;

@@ -12,14 +12,35 @@
 <body>
     <header>
         <div class="header__container">
-            <input type="button" id="brush" value="Brush"/>
-            <input type="button" id="rect-brush" value="Rect"/>
-            <input type="color" id="color-selector"/>
-            <div class="header__container--linewidth">
-                <input type="range" min="1" max="60" value="10" id="linewidth-selector" />
-                <p>Line Width: <span id="lineWidth-number"> 10</span></p>
+            <div class="container--important">
+                <div class="container__important--canvas-size">
+                    <p style="font-size: 18px; color: white;">Canvas size:</p>
+                    <label for="canvas-resize-width">X</label>
+                    <input type="number" min="1" max="1920" id="canvas-resize-width"/>
+                    <label for="canvas-resize-height">Y</label>
+                    <input type="number" min="1" max="1080"id="canvas-resize-height"/>
+                    <input type="button" id="canvas-resize" value="Enter"/>
+                </div>
+                <div class="container__important--brush">
+                    <input type="button" id="pencil-brush" value="Pencil"/>
+                    <input type="button" id="rect-brush" value="Rect"/>
+                    <input type="button" id="circle-brush" value="Circle"/>
+                </div>
+            </div>
+            <hr>
+            <div class="container--settings">
+                <input type="color" id="color-selector"/>
+                <div class="container__input-setting">
+                    <input type="range" min="1" max="60" value="10" id="linewidth-selector" />
+                    <p>Line Width: <span id="lineWidth-number" style="margin-left: 4px; min-width: 20px; display: inline-block; text-align: end;"> 10</span></p>
+                </div>
+                <div class="container__input-setting">
+                    <input type="checkbox" id="fill" min="1" max="60" value="10" />
+                    <p>Fill</p>
+                </div>
             </div>
         </div>
+
     </header>
     <div class="container">
         <div class="canvas-container">

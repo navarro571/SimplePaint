@@ -1,6 +1,6 @@
 export default interface IBrush{
-    onDown({event, context}),
-    onMove({event, context}),
-    onUp({event, context}),
-    onMouseOut(),
+    onMouseDown(e: MouseEvent, ctx: CanvasRenderingContext2D),
+    onMouseMove(e: MouseEvent, ctx: CanvasRenderingContext2D),
+    onMouseUp(e: MouseEvent, ctx: CanvasRenderingContext2D),
+    onMouseOut(e: MouseEvent, ctx: CanvasRenderingContext2D),
 }
