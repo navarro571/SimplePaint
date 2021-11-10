@@ -5,31 +5,26 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="dist/index.css">
-    <title>Paint</title>
+    <link rel="stylesheet" href="./src/style.css">
     <script src="dist/index.js" defer></script>
+    <title>Paint</title>
 </head>
 <body>
-<header>
-    <nav>
-        <ol class="color-list">
-            <li id="brush">Brush</li>
-            <li id="rect-brush">Rect</li>
-            <li style="display: flex;"><input type="color" class="color-selector" style="margin-right: 10px;"/> Color
-            </li>
-            <li style="display: flex;"><input type="range" min="1" max="60" value="10" class="linewidth-selector"
-                                              style="margin-right: 10px;"/> Line Width: <span id="lineWidth-number"
-                                                                                              style="margin-left: 4px; min-width: 20px; display: inline-block; text-align: end;"></span>
-            </li>
-        </ol>
-    </nav>
-</header>
-<div class="container">
-
-    <div class="margin">
-        <canvas height="1600" width="800"></canvas>
+    <header>
+        <div class="header__container">
+            <input type="button" id="brush" value="Brush"/>
+            <input type="button" id="rect-brush" value="Rect"/>
+            <input type="color" id="color-selector"/>
+            <div class="header__container--linewidth">
+                <input type="range" min="1" max="60" value="10" id="linewidth-selector" />
+                <p>Line Width: <span id="lineWidth-number"> 10</span></p>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="canvas-container">
+            <canvas height="900" width="1600"></canvas>
+        </div>
     </div>
-</div>
-
 </body>
 </html>

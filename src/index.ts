@@ -18,7 +18,7 @@ const renders = new Map<any, IRender>();
 renders.set(LineRenderElement, new LineRender());
 renders.set(RectRenderElement, new RectRender());
 
-const canvas = new Canvas(htmlCanvas, { height: 800, width: 600 });
+const canvas = new Canvas(htmlCanvas, { height: 900, width: 1600 });
 const render = new CanvasRender(renders, canvas.context);
 
 const defaultBrush = new DefaultBrush(render);

@@ -1,6 +1,6 @@
 
-const color: HTMLInputElement = document.querySelector(".color-selector");
-const lineWidth: HTMLInputElement = document.querySelector(".linewidth-selector");
+const color: HTMLInputElement = document.querySelector("#color-selector");
+const lineWidth: HTMLInputElement = document.querySelector("#linewidth-selector");
 const lineWidthNumber : HTMLSpanElement = document.querySelector("#lineWidth-number");
 
 lineWidthNumber.innerText = lineWidth.value;
