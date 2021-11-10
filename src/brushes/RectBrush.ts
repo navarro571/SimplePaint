@@ -1,11 +1,7 @@
 import IBrush from "../interfaces/IBrush";
 import RectRenderElement from "../canvas/CanvasComponents/RectRenderElement";
 import CanvasRender from "../canvas/CanvasRender";
-
-class Vector2 {
-    x: number;
-    y: number;
-}
+import { getColor, getLineWidth } from "../UI/UISettings";
 
 class RectBrush implements IBrush {
     isPaiting: boolean;
@@ -23,8 +19,8 @@ class RectBrush implements IBrush {
         this.rect.y = event.offsetY;
         this.rect.width = 0;
         this.rect.height = 0;
-        this.rect.color = 'gray';
-        this.rect.lineWidth = 10;
+        this.rect.color = getColor();
+        this.rect.lineWidth = getLineWidth();
         this.render.addElement(this.rect);
     }
     onMove({event, context}: { event: any; context: any }) {

@@ -1,34 +1,18 @@
 import eventBus from "../basic/EventBus"
 
-export default class CanvasMouseEvent {
-    private canvas: HTMLCanvasElement;
-    private context: CanvasRenderingContext2D;
-    private painting: boolean
+export default abstract class CanvasMouseEvent {
 
-    constructor(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
-        this.canvas = canvas
-        this.context = context 
+    private static context: CanvasRenderingContext2D;
+
+    static init(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
+        CanvasMouseEvent.context = context;
+        canvas.addEventListener('mousedown', CanvasMouseEvent.dispatchEvent)
+        canvas.addEventListener('mousemove',  CanvasMouseEvent.dispatchEvent);
+        canvas.addEventListener('mouseup',  CanvasMouseEvent.dispatchEvent);
+        canvas.addEventListener('mouseout',  CanvasMouseEvent.dispatchEvent);
     }
 
-    set(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
-        this.canvas = canvas
-        this.context = context
-    }
-
-    start() {
-        this.canvas.addEventListener('mousedown', this.dispatchEvent)
-        this.canvas.addEventListener('mousemove', this.dispatchEvent);
-        this.canvas.addEventListener('mouseup', this.dispatchEvent);
-        this.canvas.addEventListener('mouseout', this.dispatchEvent);
-    }
-
-    stop() {
-        this.canvas.removeEventListener('mousedown', this.dispatchEvent)
-        this.canvas.removeEventListener('mousemove', this.dispatchEvent);
-        this.canvas.removeEventListener('mouseup', this.dispatchEvent);
-        this.canvas.removeEventListener('mouseout', this.dispatchEvent);
-    }
-    dispatchEvent = (e: MouseEvent) =>{
-        eventBus.dispatch('canvas-' + e.type, { event: e, context: this.context })
+    private static dispatchEvent = (e: MouseEvent) => {
+        eventBus.dispatch('canvas-' + e.type, { event: e, context: CanvasMouseEvent.context })
     }
 }

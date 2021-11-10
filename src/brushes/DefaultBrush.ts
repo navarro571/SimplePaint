@@ -2,6 +2,7 @@ import IBrush from '../interfaces/IBrush';
 import Canvas from "../canvas/Canvas";
 import CanvasRender from "../canvas/CanvasRender";
 import LineRenderElement from "../canvas/CanvasComponents/LineRenderElement";
+import { getColor, getLineWidth } from "../UI/UISettings";
 
 class DefaultBrush implements IBrush {
     private isPaiting: Boolean = false;
@@ -16,8 +17,8 @@ class DefaultBrush implements IBrush {
         this.line = new LineRenderElement();
         this.line.points.push({ x: e.offsetX, y: e.offsetY });
         this.line.lineCap = 'round';
-        this.line.color = 'red';
-        this.line.lineWidth = 10;
+        this.line.color = getColor();
+        this.line.lineWidth = getLineWidth();
         this.render.addElement(this.line);
     }
 

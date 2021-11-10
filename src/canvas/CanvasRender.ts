@@ -1,9 +1,8 @@
 import IRender from "../interfaces/IRender";
 
 export default class CanvasRender {
-    renders:  Map<any, IRender>;
+    renders: Map<any, IRender>;
     renderObjects: object[] = [];
-    tempObjects: object[];
     context: CanvasRenderingContext2D;
 
     constructor(renders: Map<any, IRender>, context: CanvasRenderingContext2D) {

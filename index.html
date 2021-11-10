@@ -10,17 +10,22 @@
     <script src="dist/index.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <ol class="color-list">
-                <li id="red">red</li>
-                <li id="green">green</li>
-                <li id="rect-brush">Rect</li>
-            </ol>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <ol class="color-list">
+            <li id="brush">Brush</li>
+            <li id="rect-brush">Rect</li>
+            <li style="display: flex;"><input type="color" class="color-selector" style="margin-right: 10px;"/> Color
+            </li>
+            <li style="display: flex;"><input type="range" min="1" max="60" value="10" class="linewidth-selector"
+                                              style="margin-right: 10px;"/> Line Width: <span id="lineWidth-number"
+                                                                                              style="margin-left: 4px; min-width: 20px; display: inline-block; text-align: end;"></span>
+            </li>
+        </ol>
+    </nav>
+</header>
 <div class="container">
-    
+
     <div class="margin">
         <canvas height="1600" width="800"></canvas>
     </div>
