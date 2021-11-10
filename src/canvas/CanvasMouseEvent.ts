@@ -1,4 +1,5 @@
 import eventBus from "../basic/EventBus"
+import EventResolver from "../basic/EventResolver";
 
 export default abstract class CanvasMouseEvent {
 
@@ -13,6 +14,7 @@ export default abstract class CanvasMouseEvent {
     }
 
     private static dispatchEvent = (e: MouseEvent) => {
-        eventBus.dispatch('canvas-' + e.type, { event: e, context: CanvasMouseEvent.context })
+        // eventBus.dispatch('canvas-' + e.type, { event: e, context: CanvasMouseEvent.context })
+        EventResolver.dispatch('canvas-' + e.type, { event: e, context: CanvasMouseEvent.context })
     }
 }

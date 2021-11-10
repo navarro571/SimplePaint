@@ -1,5 +1,5 @@
 import IRender from "../../interfaces/IRender";
-import RectRenderElement from "../CanvasComponents/RectRenderElement";
+import RectRenderElement from "../elements/RectRenderElement";
 
 export default class RectRender implements IRender{
     render(object: RectRenderElement, context: CanvasRenderingContext2D) {

@@ -1,13 +1,14 @@
-import IBrush from '../interfaces/IBrush';
-import Canvas from "../canvas/Canvas";
-import CanvasRender from "../canvas/CanvasRender";
-import LineRenderElement from "../canvas/CanvasComponents/LineRenderElement";
-import { getColor, getLineWidth } from "../UI/UISettings";
+import IBrush from '../../interfaces/IBrush';
+import Canvas from "../../canvas/Canvas";
+import CanvasRender from "../../canvas/CanvasRender";
+import LineRenderElement from "../../canvas/elements/LineRenderElement";
+import { getColor, getLineWidth } from "../../UI/UISettings";
 
 class DefaultBrush implements IBrush {
     private isPaiting: Boolean = false;
-    render: CanvasRender;
-    line: LineRenderElement;
+    private render: CanvasRender;
+    private line: LineRenderElement;
+
     constructor(render: CanvasRender) {
         this.render = render;
     }

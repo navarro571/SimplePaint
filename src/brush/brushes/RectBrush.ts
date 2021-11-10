@@ -1,7 +1,7 @@
-import IBrush from "../interfaces/IBrush";
-import RectRenderElement from "../canvas/CanvasComponents/RectRenderElement";
-import CanvasRender from "../canvas/CanvasRender";
-import { getColor, getLineWidth } from "../UI/UISettings";
+import IBrush from "../../interfaces/IBrush";
+import RectRenderElement from "../../canvas/elements/RectRenderElement";
+import CanvasRender from "../../canvas/CanvasRender";
+import { getColor, getLineWidth } from "../../UI/UISettings";
 
 class RectBrush implements IBrush {
     isPaiting: boolean;

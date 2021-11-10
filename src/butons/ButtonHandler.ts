@@ -1,4 +1,4 @@
-import BrushHandler from "../brushes/BrushHandler"
+import BrushHandler from "../brush/BrushHandler"
 
 export default class ButtonHandler {
     registerButton(btn:HTMLButtonElement, brush:any){

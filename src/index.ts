@@ -1,16 +1,17 @@
 import Canvas from "./canvas/Canvas";
-import BrushHandler from "./brushes/BrushHandler";
+import BrushHandler from "./brush/BrushHandler";
 import CanvasMouseEvent from "./canvas/CanvasMouseEvent";
-import DefaultBrush from "./brushes/DefaultBrush";
+import DefaultBrush from "./brush/brushes/DefaultBrush";
 import ButtonHandler from './butons/ButtonHandler';
-import RectBrush from "./brushes/RectBrush";
+import RectBrush from "./brush/brushes/RectBrush";
 import CanvasRender from "./canvas/CanvasRender";
-import RectRender from "./canvas/Renders/RectRender";
-import LineRender from "./canvas/Renders/LineRender";
-import LineRenderElement from "./canvas/CanvasComponents/LineRenderElement";
-import RectRenderElement from "./canvas/CanvasComponents/RectRenderElement";
+import RectRender from "./canvas/renders/RectRender";
+import LineRender from "./canvas/renders/LineRender";
+import LineRenderElement from "./canvas/elements/LineRenderElement";
+import RectRenderElement from "./canvas/elements/RectRenderElement";
 import IRender from "./interfaces/IRender";
 import './style.css';
+import EventResolver from "./basic/EventResolver";
 
 const htmlCanvas: HTMLCanvasElement = document.querySelector("canvas");
 
@@ -32,5 +33,6 @@ CanvasMouseEvent.init(canvas.canvas, canvas.context);
 
 BrushHandler.init();
 BrushHandler.setBrush(defaultBrush);
+
 
 

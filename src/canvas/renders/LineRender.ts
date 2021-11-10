@@ -1,5 +1,5 @@
 import IRender from "../../interfaces/IRender";
-import LineRenderElement from "../CanvasComponents/LineRenderElement";
+import LineRenderElement from "../elements/LineRenderElement";
 
 export default class LineRender implements IRender{
     render(object: LineRenderElement, context: CanvasRenderingContext2D) {
